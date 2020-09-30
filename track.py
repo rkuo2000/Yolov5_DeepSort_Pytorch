@@ -17,7 +17,6 @@ import torch.backends.cudnn as cudnn
 import sys
 sys.path.insert(0, './yolov5')
 from  matplotlib import pyplot as plt
-%matplotlib inline
 
 
 palette = (2 ** 11 - 1, 2 ** 15 - 1, 2 ** 20 - 1)

@@ -185,7 +185,7 @@ def detect(opt, save_img=False):
             # Stream results
             if view_img:
                 #cv2.imshow(p, im0)
-                im0=cv2.cvtColor(im0,CV2.COLOR_BGR2RGB)
+                im0=cv2.cvtColor(im0,cv2.COLOR_BGR2RGB)
                 plt.imshow(im0)
                 #if cv2.waitKey(1) == ord('q'):  # q to quit
                 #    raise StopIteration

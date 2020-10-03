@@ -97,7 +97,7 @@ def detect(opt, save_img=False):
         cudnn.benchmark = True  # set True to speed up constant image size inference
         dataset = LoadStreams(source, img_size=imgsz)
     else:
-        view_img = True
+        view_img = False
         save_img = True
         dataset = LoadImages(source, img_size=imgsz)
 
@@ -109,7 +109,7 @@ def detect(opt, save_img=False):
     img = torch.zeros((1, 3, imgsz, imgsz), device=device)  # init img
     _ = model(img.half() if half else img) if device.type != 'cpu' else None  # run once
 
-    save_path = str(Path(out))
+    save_path = str(Path(out)) + '/results.mp4'
     txt_path = str(Path(out)) + '/results.txt'
 
     for frame_idx, (path, img, im0s, vid_cap) in enumerate(dataset):
@@ -184,10 +184,9 @@ def detect(opt, save_img=False):
 
             # Stream results
             if view_img:
-                print('view_img')
-                #cv2.imshow(p, im0)
-                #if cv2.waitKey(1) == ord('q'):  # q to quit
-                #    raise StopIteration
+                cv2.imshow(p, im0)
+                if cv2.waitKey(1) == ord('q'):  # q to quit
+                    raise StopIteration
 
             # Save results (image with detections)
             if save_img:
